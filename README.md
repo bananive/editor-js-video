@@ -1,10 +1,8 @@
-![](https://badgen.net/badge/Editor.js/v2.0/blue)
+![](https://badgen.net/badge/Editor.js/v0.2/blue)
 
 # Video Tool
 
 Video Block for the [Editor.js](https://editorjs.io).
-
-![](https://capella.pics/63a03d04-3816-45b2-87b2-d85e556f0066.jpg)
 
 ## Features
 
@@ -13,7 +11,6 @@ Video Block for the [Editor.js](https://editorjs.io).
 - Pasting videos by drag-n-drop
 - Pasting files and screenshots from Clipboard
 - Allows adding a border, and a background
-- Allows stretching an image to the container's full-width
 
 **Notes**
 
