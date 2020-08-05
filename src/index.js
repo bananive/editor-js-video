@@ -209,7 +209,7 @@ export default class VideoTool {
       /**
        * Paste HTML into Editor
        */
-      tags: [ 'iframe' ],
+      tags: [ 'video' ],
 
       /**
        * Paste URL of image into the Editor
