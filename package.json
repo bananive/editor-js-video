@@ -1,14 +1,14 @@
 {
-  "name": "@editorjs/image",
-  "version": "2.4.2",
+  "name": "@editorjs/video",
+  "version": "0.0.1",
   "keywords": [
     "codex editor",
     "tool",
-    "image",
+    "video",
     "editor.js",
     "editorjs"
   ],
-  "description": "Image Tool for Editor.js",
+  "description": "Video Tool for Editor.js",
   "license": "MIT",
   "repository": "https://github.com/editor-js/image",
   "main": "./dist/bundle.js",
