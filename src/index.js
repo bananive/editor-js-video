@@ -1,5 +1,5 @@
 /**
- * Image Tool for the Editor.js
+ * Video Tool for the Editor.js
  *
  * @author CodeX <team@codex.so>
  * @license MIT
@@ -74,7 +74,7 @@ import Uploader from './uploader';
  *                           also can contain any additional data that will be saved and passed back
  * @property {string} file.url - [Required] image source URL
  */
-export default class ImageTool {
+export default class VideoTool {
   /**
    * Get Tool toolbox settings
    * icon - Tool icon's SVG
@@ -85,7 +85,7 @@ export default class ImageTool {
   static get toolbox() {
     return {
       icon: ToolboxIcon,
-      title: 'Image',
+      title: 'Video',
     };
   }
 
@@ -105,8 +105,8 @@ export default class ImageTool {
       endpoints: config.endpoints || '',
       additionalRequestData: config.additionalRequestData || {},
       additionalRequestHeaders: config.additionalRequestHeaders || {},
-      field: config.field || 'image',
-      types: config.types || 'image/*',
+      field: config.field || 'video',
+      types: config.types || 'video/mp4',
       captionPlaceholder: this.api.i18n.t(config.captionPlaceholder || 'Caption'),
       buttonContent: config.buttonContent || '',
       uploader: config.uploader || undefined,
@@ -209,20 +209,20 @@ export default class ImageTool {
       /**
        * Paste HTML into Editor
        */
-      tags: [ 'img' ],
+      tags: [ 'iframe' ],
 
       /**
        * Paste URL of image into the Editor
        */
       patterns: {
-        image: /https?:\/\/\S+\.(gif|jpe?g|tiff|png)$/i,
+        video: /https?:\/\/\S+\.(mp4)$/i,
       },
 
       /**
        * Drag n drop file from into the Editor
        */
       files: {
-        mimeTypes: [ 'image/*' ],
+        mimeTypes: [ 'video/mp4' ],
       },
     };
   }
@@ -239,18 +239,18 @@ export default class ImageTool {
   async onPaste(event) {
     switch (event.type) {
       case 'tag': {
-        const image = event.detail.data;
+        const video = event.detail.data;
 
         /** Images from PDF */
-        if (/^blob:/.test(image.src)) {
-          const response = await fetch(image.src);
+        if (/^blob:/.test(video.src)) {
+          const response = await fetch(video.src);
           const file = await response.blob();
 
           this.uploadFile(file);
           break;
         }
 
-        this.uploadUrl(image.src);
+        this.uploadUrl(video.src);
         break;
       }
       case 'pattern': {
@@ -281,7 +281,7 @@ export default class ImageTool {
    * @param {ImageToolData} data - data in Image Tool format
    */
   set data(data) {
-    this.image = data.file;
+    this.video = data.file;
 
     this._data.caption = data.caption || '';
     this.ui.fillCaption(this._data.caption);
@@ -311,11 +311,11 @@ export default class ImageTool {
    *
    * @param {object} file - uploaded file data
    */
-  set image(file) {
+  set video(file) {
     this._data.file = file || {};
 
     if (file && file.url) {
-      this.ui.fillImage(file.url);
+      this.ui.fillVideo(file.url);
     }
   }
 
@@ -329,7 +329,7 @@ export default class ImageTool {
    */
   onUpload(response) {
     if (response.success && response.file) {
-      this.image = response.file;
+      this.video = response.file;
     } else {
       this.uploadingFailed('incorrect response: ' + JSON.stringify(response));
     }
@@ -343,10 +343,10 @@ export default class ImageTool {
    * @returns {void}
    */
   uploadingFailed(errorText) {
-    console.log('Image Tool: uploading failed because of', errorText);
+    console.log('Video Tool: uploading failed because of', errorText);
 
     this.api.notifier.show({
-      message: this.api.i18n.t('Couldn’t upload image. Please try another.'),
+      message: this.api.i18n.t('Couldn’t upload video. Please try another.'),
       style: 'error',
     });
     this.ui.hidePreloader();
@@ -407,7 +407,7 @@ export default class ImageTool {
   }
 
   /**
-   * Show preloader and upload image by target url
+   * Show preloader and upload video by target url
    *
    * @param {string} url - url pasted
    * @returns {void}
