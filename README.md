@@ -1,8 +1,8 @@
 ![](https://badgen.net/badge/Editor.js/v2.0/blue)
 
-# Image Tool
+# Video Tool
 
-Image Block for the [Editor.js](https://editorjs.io).
+Video Block for the [Editor.js](https://editorjs.io).
 
 ![](https://capella.pics/63a03d04-3816-45b2-87b2-d85e556f0066.jpg)
 
@@ -10,7 +10,7 @@ Image Block for the [Editor.js](https://editorjs.io).
 
 - Uploading file from the device
 - Pasting copied content from the web
-- Pasting images by drag-n-drop
+- Pasting videos by drag-n-drop
 - Pasting files and screenshots from Clipboard
 - Allows adding a border, and a background
 - Allows stretching an image to the container's full-width
