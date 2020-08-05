@@ -145,7 +145,7 @@ export default class Ui {
    * @param {string} url - image source
    * @returns {void}
    */
-  fillImage(url) {
+  fillVideo(url) {
     /**
      * Check for a source extension to compose element correctly: video tag for mp4, img — for others
      */
